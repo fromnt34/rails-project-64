@@ -5,6 +5,7 @@ AllCops:
     - 'bin/**'
     - 'db/schema.rb'
     - 'db/migrate/**'
+    - 'vendor/**/*'
 
 Style/Documentation:
   Enabled: false
