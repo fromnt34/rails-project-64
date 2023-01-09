@@ -12,3 +12,11 @@ test:
 	NODE_ENV=test bin/rails test
 
 .PHONY: test
+
+lint:
+	rubocop
+	slim-lint app/views/
+
+check:
+	make test
+	make lint
