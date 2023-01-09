@@ -58,6 +58,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'faker'
   gem 'rubocop', require: false
+  gem 'slim_lint'
   gem 'sqlite3'
 end
 
