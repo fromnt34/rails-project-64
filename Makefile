@@ -23,3 +23,4 @@ ci-setup:
 		yarn install
 		bundle install --without production development
 		RAILS_ENV=test bin/rails db:prepare
+		RAILS_ENV=test bin/rails assets:precompile
