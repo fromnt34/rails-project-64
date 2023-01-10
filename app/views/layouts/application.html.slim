@@ -6,7 +6,12 @@ html
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
+    = stylesheet_link_tag 'custom', media: 'all', 'data-turbolinks-track': true
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  body
-    = render 'layouts/navigation_menu'
-    = yield
+  body class='d-flex flex-column h-100'
+    header class='mb-2'
+      div class='container'
+        = render 'layouts/partial/navigation/menu'
+    main class='my-4'
+      div class='container'
+        = yield

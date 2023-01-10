@@ -1,0 +1,17 @@
+h2 Вход
+= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+  .field
+    = f.label :email
+    = f.email_field :email,
+    autofocus: true, autocomplete: 'email',
+    class: 'form-control'
+  .field
+    = f.label :password, 'Пароль'
+    = f.password_field :password, autocomplete: 'current-password', class: 'form-control'
+  - if devise_mapping.rememberable?
+    .form-check
+      = f.check_box :remember_me, class: 'form-check-input'
+      = f.label :remember_me, 'Запомнить меня', class: 'form-check-label'
+  .actions
+    = f.submit 'Вход', class: 'btn btn-primary'
+= render 'devise/shared/links'
