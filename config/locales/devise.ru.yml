@@ -1,0 +1,19 @@
+# Additional translations at https://github.com/heartcombo/devise/wiki/I18n
+
+ru:
+  devise:
+    failure:
+      invalid: 'Неправильный %{authentication_keys} или пароль.'
+      not_found_in_database: 'Неправильный %{authentication_keys} или пароль.'
+    registrations:
+      signed_up: 'Добро пожаловать! Вы успешно зарегистрировались.'
+    sessions:
+      signed_in: 'Вход в систему выполнен.'
+      signed_out: 'Signed out successfully.'
+      already_signed_out: 'Signed out successfully.'
+  activerecord:
+    attributes:
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'

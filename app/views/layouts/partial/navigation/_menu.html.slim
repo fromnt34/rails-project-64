@@ -4,9 +4,21 @@ nav class='navbar py-3 border-bottom'
     class: 'navbar-brand',
     'aria-label': 'Домой'
   ul class='nav nav-pills'
-    li class='nav-item ms-2'
-      = render 'layouts/partial/navigation/link',
-        text: 'Войти', path: new_user_session_path
-    li class='nav-item ms-2'
-      = render 'layouts/partial/navigation/link',
-        text: 'Регистрация', path: new_user_registration_path
+    - if current_user.present?
+      li class='nav-item ms-2'
+        = render 'layouts/partial/navigation/link',
+          text: 'Добавить статью',
+          path: new_user_session_path
+      li class='nav-item ms-2'
+        = render 'layouts/partial/navigation/link',
+          text: 'Выйти',
+          path: new_user_registration_path
+    - else
+      li class='nav-item ms-2'
+        = render 'layouts/partial/navigation/link',
+          text: 'Войти',
+          path: new_user_session_path
+      li class='nav-item ms-2'
+        = render 'layouts/partial/navigation/link',
+          text: 'Регистрация',
+          path: new_user_registration_path

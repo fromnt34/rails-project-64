@@ -51,8 +51,10 @@ gem 'bootsnap', require: false
 # gem "image_processing", "~> 1.2"
 
 gem 'devise'
+gem 'rails-i18n', '~> 7.0.0'
 gem 'sentry-rails'
 gem 'sentry-ruby'
+gem 'simple_form'
 gem 'slim-rails'
 
 group :development, :test do

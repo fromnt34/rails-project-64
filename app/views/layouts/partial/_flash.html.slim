@@ -1,0 +1,7 @@
+- alert_types = { \
+  notice: 'alert-info',
+  alert: 'alert-danger' \
+}
+
+- flash.each do |type, message|
+  div[class="alert #{alert_types.fetch(type.to_sym, "alert-#{type}")}"] = message

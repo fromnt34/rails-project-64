@@ -1,7 +1,9 @@
 - if active?(path)
-  = link_to text, path,
-    class: ['nav-link link-dark', 'active'],
+  = link_to text,
+    path,
+    class: %w[nav-link link-dark active],
     'aria-current': 'page'
 - else
-  = link_to text, path,
-    class: ['nav-link link-dark']
+  = link_to text,
+    path,
+    class: %w[nav-link link-dark]
