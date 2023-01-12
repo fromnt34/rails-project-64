@@ -3,7 +3,7 @@ h2 Регистрация
   .mb-3 = f.input :email, autocomplete: 'email', autofocus: true
   .mb-3 = f.input :password,
             autocomplete: 'new-password',
-            hint: "(минимум #{@minimum_password_length} знаков)"
+            hint: t('simple_form.hints.defaults.password', count: @minimum_password_length)
   .mb-3 = f.input :password_confirmation, autocomplete: 'new-password'
   = f.button :submit, 'Регистрация'
 .mt-3 = render 'devise/shared/navigation/links'

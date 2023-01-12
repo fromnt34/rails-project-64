@@ -1,5 +1,5 @@
 one:
-  email: emailone@domain.com
+  email: MyString@one.one
 
 two:
-  email: emailtwo@domain.com
+  email: MyString@two.two
