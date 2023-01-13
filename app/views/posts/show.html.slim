@@ -1,0 +1,17 @@
+ol.breadcrumb
+  li.breadcrumb-item = link_to 'Все статьи', root_path
+  li[class='breadcrumb-item active'] = @post.category.name
+
+article.mt-4
+  h1.mb-lg-5 = @post.title
+  = simple_format @post.body
+
+  div[class='d-flex justify-content-between mt-5']
+    div
+      span.me-2 = @post.creator.email
+      span = time_ago_in_words @post.created_at
+    div
+      = 'Лайки'
+      i[class='far fa-thumbs-up text-secondary']
+
+div[class='lead mb-3'] Коментарий

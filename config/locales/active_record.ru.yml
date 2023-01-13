@@ -1,0 +1,11 @@
+ru:
+  activerecord:
+    attributes:
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+        remember_me: 'Запомнить меня'
+      post:
+        title: 'Заголовок'
+        body: 'Содержание'
+        category: 'Категория'

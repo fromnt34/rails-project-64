@@ -1,7 +1,10 @@
 h2 Вход
+
 = simple_form_for resource, url: session_path(resource_name), data: { turbo: false } do |f|
   = f.input :email, autocomplet: 'email', autofocus: true
   = f.input :password, autocomplet: 'current-password'
   = f.input :remember_me, as: :boolean
-  = f.button :submit, 'Войти'
+
+  = f.button :submit, 'Вход'
+
 = render 'devise/shared/navigation/links'

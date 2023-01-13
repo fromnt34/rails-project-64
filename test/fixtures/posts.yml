@@ -1,0 +1,5 @@
+one:
+  title: MyString
+  body: MyText
+  creator: current_user
+  category: one

@@ -1,0 +1,6 @@
+= simple_form_for post, data: { turbo: false } do |f|
+  = f.input :title
+  = f.input :body
+  = f.association :category
+
+  = f.button :submit, 'Создать статью'

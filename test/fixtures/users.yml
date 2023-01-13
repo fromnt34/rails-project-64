@@ -1,5 +1,2 @@
-one:
+current_user:
   email: MyString@one.one
-
-two:
-  email: MyString@two.two
