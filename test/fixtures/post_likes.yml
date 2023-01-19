@@ -1,0 +1,3 @@
+one:
+  post: with_like
+  user: current_user

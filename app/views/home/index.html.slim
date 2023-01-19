@@ -2,15 +2,15 @@ h1 Коллективный блог
 
 div
   - @posts.by_recently_created.each do |post|
-    article[class='card mb-3']
+    article.card.mb-3
       .card-body
-        h2[class='h5']
+        h2.h5
           = link_to post.title,
             post,
             class: 'link-dark text-decoration-none'
-        p[class='mb-2'] = post.body.truncate_words 30
+        p.mb-2 = post.body.truncate_words 30
 
-        div[class='small text-muted']
-          span.me-2 = 'Понравилось: '
+        .small.text-muted
+          span.me-2 = "Понравилось: #{post.likes.count}"
           span.me-2 = time_ago_in_words post.created_at
           span = post.creator.email

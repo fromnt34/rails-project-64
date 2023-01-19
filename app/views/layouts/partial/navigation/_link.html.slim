@@ -5,8 +5,7 @@
   = link_to text,
     path,
     **default_params.merge({ \
-      class: %w[nav-link active], \
-      'aria-current': 'page' \
+      class: %w[nav-link active] \
     })
 
 - elsif link_method
@@ -14,7 +13,7 @@
     = link_to text,
       path,
       **default_params.merge({ \
-        method: link_method, \
+        method: :delete, \
         data: { \
           turbo_method: :delete \
         } \

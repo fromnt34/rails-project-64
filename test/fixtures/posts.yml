@@ -3,3 +3,9 @@ one:
   body: MyText
   creator: current_user
   category: one
+
+with_like:
+  title: MyString
+  body: MyText
+  creator: current_user
+  category: one

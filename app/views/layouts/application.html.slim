@@ -7,11 +7,11 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', defer: true
-  body class='d-flex flex-column h-100'
-    header class='mb-2'
-      div class='container'
+  body.d-flex.flex-column.h-100
+    header.mb-2
+      .container
         = render 'layouts/partial/navigation/menu'
-    main class='my-4'
-      div class='container'
+    main.my-4
+      .container
         = render 'layouts/partial/flash'
         = yield

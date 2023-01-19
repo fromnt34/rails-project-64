@@ -1,0 +1,4 @@
+with_nested:
+  content: MyText
+  post: one
+  user: current_user

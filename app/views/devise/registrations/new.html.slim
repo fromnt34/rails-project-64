@@ -2,9 +2,10 @@ h2 Регистрация
 
 = simple_form_for resource, url: registration_path(resource_name), data: { turbo: false } do |f|
   .mb-3 = f.input :email, autocomplete: 'email', autofocus: true
-  .mb-3 = f.input :password,
-            autocomplete: 'new-password',
-            hint: "(минимум #{@minimum_password_length} знаков)"
+  .mb-3
+    = f.input :password,
+      autocomplete: 'new-password',
+      hint: "(минимум #{@minimum_password_length} знаков)"
   .mb-3 = f.input :password_confirmation, autocomplete: 'new-password'
 
   = f.button :submit, 'Регистрация'

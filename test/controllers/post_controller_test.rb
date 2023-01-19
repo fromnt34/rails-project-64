@@ -6,9 +6,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   include Warden::Test::Helpers
 
   setup do
-    login_as users :current_user
+    login_as users(:current_user)
 
     @post = posts :one
+
     @attrs = {
       title: Faker::Lorem.sentence,
       body: Faker::Lorem.characters(number: 100),

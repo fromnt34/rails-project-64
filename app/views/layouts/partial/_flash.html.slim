@@ -4,4 +4,5 @@
 }
 
 - flash.each do |type, message|
-  div[class="alert #{alert_types.fetch(type.to_sym, "alert-#{type}")}"] = message
+  div class="alert #{alert_types.fetch(type.to_sym, "alert-#{type}")}"
+    = message

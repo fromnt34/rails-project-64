@@ -1,17 +1,40 @@
 ol.breadcrumb
   li.breadcrumb-item = link_to 'Все статьи', root_path
-  li[class='breadcrumb-item active'] = @post.category.name
+  li.breadcrumb-item.active
+    = @post.category.name
 
 article.mt-4
   h1.mb-lg-5 = @post.title
   = simple_format @post.body
 
-  div[class='d-flex justify-content-between mt-5']
+  div class='d-flex justify-content-between mt-5'
     div
       span.me-2 = @post.creator.email
       span = time_ago_in_words @post.created_at
-    div
-      = 'Лайки'
-      i[class='far fa-thumbs-up text-secondary']
+    div = render 'posts/likes/partial/button', post: @post
 
-div[class='lead mb-3'] Коментарий
+div
+  p.lead.mb-3 Комментарий
+
+  - if current_user.present?
+    = render( \
+      'posts/comments/partial/form',
+      comment: @new_comment,
+      url: post_comments_path(@post),
+      custom_class: 'mb-4' \
+    )
+
+  - @post.comments.each do |comment|
+    = next if comment.has_parent?
+
+    .card.mb-4
+      .card-header.mb-2.small
+        span.me-2 = comment.user.email
+        span = time_ago_in_words comment.created_at
+
+      .card-body
+        p.mb-3 = comment.content
+        = render partial: 'posts/comments/partial/nested_comment', collection: comment.children
+
+      hr.my-2
+      = render 'posts/comments/partial/reply_button', comment:, custom_class: 'p-4 pb-2'
