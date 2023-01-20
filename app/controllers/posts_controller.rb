@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     @post.creator = current_user
 
     if @post.save
-      redirect_to root_path, notice: 'Статья успешно добавлена'
+      redirect_to root_path, notice: t('.')
     else
       render :new, status: :unprocessable_entity
     end

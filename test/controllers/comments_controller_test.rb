@@ -31,7 +31,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create nested comment' do
     post post_comments_url(@post), params: { post_comment: @nested_attrs }
 
-    comment = PostComment.find { |i| i.parent_comment == @nested_attrs[:parent_id] }
+    comment = PostComment.find { |i| i.ancestry == @nested_attrs[:parent_id] }
 
     assert { comment }
     assert { @post.comments.include? comment }

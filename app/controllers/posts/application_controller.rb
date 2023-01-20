@@ -5,7 +5,7 @@ module Posts
     def require_login
       return if current_user.present?
 
-      flash[:alert] = 'Вам необходимо войти в систему или зарегистрироваться.'
+      flash[:alert] = t('.auth.require')
       redirect_to new_user_session_path
     end
 

@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
 class Post < ApplicationRecord
-  belongs_to :creator, class_name: 'User', foreign_key: 'user_id'
+  belongs_to :creator, class_name: 'User', foreign_key: 'user_id', inverse_of: :posts
   belongs_to :category
-  has_many :likes, class_name: 'PostLike'
-  has_many :comments, class_name: 'PostComment'
+  has_many :likes, class_name: 'PostLike', dependent: :destroy
+  has_many :comments, class_name: 'PostComment', dependent: :destroy
 
   validates :title, :body, presence: true
-  validates_length_of :body, minimum: 50
+  validates :body, length: { minimum: 50 }
 
   scope :by_recently_created, -> { order(created_at: :desc) }
 
@@ -16,6 +16,6 @@ class Post < ApplicationRecord
   end
 
   def liked_by?(user)
-    likes.where(user:).exists?
+    likes.exists?(user:)
   end
 end

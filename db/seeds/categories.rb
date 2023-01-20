@@ -2,8 +2,8 @@
 
 module Seeder
   module Categories
-    def self.seed(i)
-      Category.create!(name: "Category #{i + 1}")
+    def self.seed(iter)
+      Category.create!(name: "Category #{iter + 1}")
     end
   end
 end
