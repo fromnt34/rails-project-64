@@ -23,8 +23,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_119_191_341) do
     t.text 'content'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'post_id', null: false
-    t.integer 'user_id', null: false
+    t.integer 'post_id'
+    t.integer 'user_id'
     t.string 'ancestry'
     t.index ['ancestry'], name: 'index_post_comments_on_ancestry'
     t.index ['post_id'], name: 'index_post_comments_on_post_id'
@@ -34,8 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_119_191_341) do
   create_table 'post_likes', force: :cascade do |t|
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'post_id', null: false
-    t.integer 'user_id', null: false
+    t.integer 'post_id'
+    t.integer 'user_id'
     t.index ['post_id'], name: 'index_post_likes_on_post_id'
     t.index ['user_id'], name: 'index_post_likes_on_user_id'
   end
@@ -45,8 +45,8 @@ ActiveRecord::Schema[7.0].define(version: 20_230_119_191_341) do
     t.text 'body'
     t.datetime 'created_at', null: false
     t.datetime 'updated_at', null: false
-    t.integer 'user_id', null: false
-    t.integer 'category_id', null: false
+    t.integer 'user_id'
+    t.integer 'category_id'
     t.index ['category_id'], name: 'index_posts_on_category_id'
     t.index ['user_id'], name: 'index_posts_on_user_id'
   end

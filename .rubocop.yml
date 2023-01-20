@@ -8,14 +8,14 @@ AllCops:
   TargetRailsVersion: 7
   DisplayCopNames: true
   Exclude:
-    - 'code/bin/**'
-    - 'code/db/schema.rb'
-    - 'code/db/migrate/**'
-    - 'code/vendor/**/*'
-    - 'code/node_modules/**/*'
+    - 'bin/**'
+    - 'db/schema.rb'
+    - 'db/migrate/**'
     - 'vendor/**/*'
     - 'node_modules/**/*'
-    - 'code/tmp/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - 'tmp/**/*'
   SuggestExtensions: false
 
 Rails:
