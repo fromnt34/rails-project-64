@@ -8,6 +8,6 @@ h2 Регистрация
       hint: "(минимум #{@minimum_password_length} знаков)"
   .mb-3 = f.input :password_confirmation, autocomplete: 'new-password'
 
-  = f.button :submit, 'Регистрация'
+  = f.button :submit, 'Регистрация', class: 'btn-primary'
 
 .mt-3 = render 'devise/shared/navigation/links'

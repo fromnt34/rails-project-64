@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  before_action :require_login, only: %i[new create]
+
   def show
     @post = Post.find params[:id]
 

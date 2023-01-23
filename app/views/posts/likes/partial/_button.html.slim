@@ -4,4 +4,4 @@
 
 span.me-2 = post.likes.count
 = link_to path, method:, data: { turbo_method: method } do
-  i.far.fa-thumbs-up.text-secondary Like
+  i.bi class="#{is_liked ? 'bi-hand-thumbs-up-fill' : 'bi-hand-thumbs-up'}"

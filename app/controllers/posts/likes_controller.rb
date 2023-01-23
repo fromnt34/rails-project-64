@@ -2,9 +2,11 @@
 
 module Posts
   class LikesController < ApplicationController
-    before_action :require_login
+    before_action :require_login, only: :create
 
     def create
+      return if already_liked?
+
       @like = PostLike.create(
         post: resource_post,
         user: current_user
@@ -14,10 +16,18 @@ module Posts
     end
 
     def destroy
-      @like = resource_post.likes.find params[:id]
+      return unless already_liked?
+
+      @like = resource_post.find_like current_user
       @like.destroy
 
       redirect_to resource_post
+    end
+
+    private
+
+    def already_liked?
+      !resource_post.find_like(current_user).nil?
     end
   end
 end

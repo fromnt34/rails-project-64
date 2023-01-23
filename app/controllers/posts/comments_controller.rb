@@ -2,6 +2,8 @@
 
 module Posts
   class CommentsController < ApplicationController
+    before_action :require_login, only: :create
+
     def create
       @comment = PostComment.new comment_params
       @comment.post = resource_post
@@ -13,7 +15,7 @@ module Posts
         model_name = 'Комментарий'
         flash[:alert] = "#{model_name} #{@comment.errors.messages[:content].first}"
 
-        redirect_to resource_post
+        redirect_to resource_post, status: :unprocessable_entity
       end
     end
 

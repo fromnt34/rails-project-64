@@ -5,6 +5,6 @@ h2 Вход
   = f.input :password, autocomplet: 'current-password'
   = f.input :remember_me, as: :boolean
 
-  = f.button :submit, 'Вход'
+  = f.button :submit, 'Вход', class: 'btn-primary'
 
 = render 'devise/shared/navigation/links'
