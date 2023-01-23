@@ -19,6 +19,9 @@ lint:
 
 check: test lint
 
+seed:
+		bin/rails db:seed
+
 ci-setup:
 		yarn install
 		bundle install --without production development
