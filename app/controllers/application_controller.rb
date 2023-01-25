@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  def require_login
-    return if current_user.present?
+  private
 
-    flash[:alert] = t('auth.require')
-    redirect_to new_user_session_path
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to new_user_session_path, alert: t('devise.failure.unauthenticated')
+    end
   end
 end

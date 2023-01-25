@@ -1,0 +1,8 @@
+ru:
+  pages:
+    navigation:
+      links:
+        sign_in: Вход
+        sign_up: Регистрация
+        new_post: Добавить статью
+        sign_out: Выйти

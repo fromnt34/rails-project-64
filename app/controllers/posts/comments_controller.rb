@@ -2,11 +2,10 @@
 
 module Posts
   class CommentsController < ApplicationController
-    before_action :require_login, only: :create
+    before_action :authenticate_user!
 
     def create
-      @comment = PostComment.new comment_params
-      @comment.post = resource_post
+      @comment = resource_post.comments.build comment_params
       @comment.user = current_user
 
       if @comment.save

@@ -1,0 +1,20 @@
+ru:
+  pages:
+    home:
+      index:
+        welcome_title: Коллективный блог
+    users:
+      sign_up:
+        welcome_title: Регистрация
+      sign_in:
+        welcome_title: Вход
+    posts:
+      new:
+        welcome_title: Новая статья
+      show:
+        tags:
+          root: Все статьи
+      likes:
+        text: Понравилось %{count}
+      comments:
+        text: Комментарий

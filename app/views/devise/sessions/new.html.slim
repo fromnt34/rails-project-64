@@ -1,10 +1,10 @@
-h2 Вход
+h2 = t(:welcome_title, scope: 'pages.users.sign_in')
 
 = simple_form_for resource, url: session_path(resource_name), data: { turbo: false } do |f|
   = f.input :email, autocomplet: 'email', autofocus: true
   = f.input :password, autocomplet: 'current-password'
   = f.input :remember_me, as: :boolean
 
-  = f.button :submit, 'Вход', class: 'btn-primary'
+  = f.button :submit, t(:sign_in, scope: 'simple_form.submit_buttons'), class: 'btn-primary'
 
 = render 'devise/shared/navigation/links'

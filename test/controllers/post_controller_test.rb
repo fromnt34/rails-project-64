@@ -7,7 +7,8 @@ module PostsControllerTest
     include Devise::Test::IntegrationHelpers
 
     setup do
-      sign_in users :current_user
+      @current_user = users :current_user
+      sign_in @current_user
 
       @post = posts :one
 
@@ -26,13 +27,15 @@ module PostsControllerTest
     test 'should create post' do
       post posts_url, params: { post: @attrs }
 
-      post = Post.find_by @attrs
+      post = Post.find_by @attrs.merge({
+                                         creator: @current_user
+                                       })
 
       assert { post }
       assert_redirected_to root_url
     end
 
-    test 'should not create post' do
+    test 'should not create post due to validation' do
       wrong_attrs = {
         title: nil,
         body: nil,

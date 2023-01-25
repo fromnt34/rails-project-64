@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :require_login, only: %i[new create]
+  before_action :authenticate_user!, only: %i[new create]
 
   def show
     @post = Post.find params[:id]
 
+    @user_like = @post.find_like current_user
+
+    @comments = @post.comments.filter(&:is_root?).map { |el| el.subtree.arrange }
     @new_comment = PostComment.new
   end
 
@@ -14,8 +17,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new post_params
-    @post.creator = current_user
+    @post = current_user.posts.build post_params
 
     if @post.save
       redirect_to root_path, notice: t('.')

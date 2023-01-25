@@ -14,8 +14,4 @@ class Post < ApplicationRecord
   def find_like(user)
     likes.find { |like| like.user_id == user.id }
   end
-
-  def liked_by?(user)
-    likes.exists?(user:)
-  end
 end

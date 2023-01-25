@@ -1,8 +1,19 @@
 ru:
   simple_form:
     required:
-      text: 'обязательное'
+      text: обязательное
       mark: '*'
+    hints:
+      new:
+        password:
+          many: (минимум %{count} знаков)
+    submit_buttons:
+      sign_up: Регистрация
+      sign_in: Вход
+      post:
+        new: Создать статью
+        comment:
+          new: Создать комментарий
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'

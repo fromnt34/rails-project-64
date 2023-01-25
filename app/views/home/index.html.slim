@@ -1,7 +1,7 @@
-h1 Коллективный блог
+h1 = t(:welcome_title, scope: 'pages.home.index')
 
 div
-  - @posts.by_recently_created.each do |post|
+  - @posts.each do |post|
     article.card.mb-3
       .card-body
         h2.h5
@@ -11,6 +11,6 @@ div
         p.mb-2 = post.body.truncate_words 30
 
         .small.text-muted
-          span.me-2 = "Понравилось: #{post.likes.count}"
+          span.me-2 = t(:text, scope: 'pages.posts.likes', count: post.likes.size)
           span.me-2 = time_ago_in_words post.created_at
           span = post.creator.email

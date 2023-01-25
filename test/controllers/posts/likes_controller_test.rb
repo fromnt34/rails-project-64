@@ -7,27 +7,28 @@ module LikesControllerTest
     include Devise::Test::IntegrationHelpers
 
     setup do
-      @post = posts :one
-      @user = users :current_user
-
-      sign_in @user
+      @current_user = users :current_user
+      sign_in @current_user
     end
 
     test 'should create like' do
-      post post_likes_path(@post)
+      test_post = posts :one
 
-      assert { @post.find_like @user }
+      post post_likes_path(test_post)
 
-      assert_redirected_to @post
+      like = PostLike.find_by({ post: test_post, user: @current_user })
+
+      assert { like }
+      assert_redirected_to test_post
     end
 
     test 'should delete like' do
       post = posts :with_like
+      like = post_likes :one
 
-      like = post.find_like @user
       delete post_like_path(post, like)
 
-      assert { post.likes.count.zero? }
+      assert { post.likes.find_by(id: like.id).nil? }
       assert_redirected_to post
     end
   end

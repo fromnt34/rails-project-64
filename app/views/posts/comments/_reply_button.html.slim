@@ -4,11 +4,12 @@ div class=custom_class
   - comment_id = comment.id
 
   a.small.text-muted data-bs-toggle='collapse' href="#new_post_comment-#{comment_id}"
-    | Ответить
+    = t('reply')
+
   .collapse data-bs-target="new_post_comment-#{comment_id}" id="new_post_comment-#{comment_id}"
     - if current_user.present?
       = render( \
-        'posts/comments/partial/form',
+        'posts/comments/form',
         comment: comment.children.new,
         url: post_comments_path(comment.post),
         custom_class: 'mb-4' \

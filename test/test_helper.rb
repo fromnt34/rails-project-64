@@ -19,6 +19,5 @@ end
 def test_redirect_to_sign_in
   yield
 
-  assert_response :redirect
   assert_redirected_to new_user_session_path
 end

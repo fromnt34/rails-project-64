@@ -7,7 +7,8 @@ module CommentsControllerTest
     include Devise::Test::IntegrationHelpers
 
     setup do
-      sign_in users :current_user
+      @current_user = users :current_user
+      sign_in @current_user
 
       @post = posts :one
 
@@ -22,14 +23,16 @@ module CommentsControllerTest
     test 'should create comment' do
       post post_comments_url(@post), params: { post_comment: @attrs }
 
-      comment = PostComment.find_by @attrs
+      comment = PostComment.find_by @attrs.merge({
+                                                   post: @post,
+                                                   user: @current_user
+                                                 })
 
       assert { comment }
-      assert { @post.comments.include? comment }
       assert_redirected_to @post
     end
 
-    test 'should not create comment' do
+    test 'should not create comment due to validation' do
       wrong_attrs = {
         content: nil
       }
@@ -45,10 +48,11 @@ module CommentsControllerTest
     test 'should create nested comment' do
       post post_comments_url(@post), params: { post_comment: @nested_attrs }
 
-      comment = PostComment.find { |i| i.ancestry == @nested_attrs[:parent_id] }
+      comment = PostComment.find do |i|
+        i.ancestry == @nested_attrs[:parent_id] && i.post == @post && i.user == @current_user
+      end
 
       assert { comment }
-      assert { @post.comments.include? comment }
       assert_redirected_to @post
     end
   end

@@ -1,5 +1,5 @@
 ol.breadcrumb
-  li.breadcrumb-item = link_to 'Все статьи', root_path
+  li.breadcrumb-item = link_to t('pages.posts.show.tags.root'), root_path
   li.breadcrumb-item.active
     = @post.category.name
 
@@ -11,30 +11,29 @@ article.mt-4
     div
       span.me-2 = @post.creator.email
       span = time_ago_in_words @post.created_at
-    div = render 'posts/likes/partial/button', post: @post
+    div = render 'posts/likes/button', post: @post, like: @user_like
 
 div
-  p.lead.mb-3 Комментарий
+  p.lead.mb-3 = t(:text, scope: 'pages.posts.comments')
 
   - if current_user.present?
     = render( \
-      'posts/comments/partial/form',
+      'posts/comments/form',
       comment: @new_comment,
       url: post_comments_path(@post),
       custom_class: 'mb-4' \
     )
 
-  - @post.comments.each do |comment|
-    = next if comment.has_parent?
+  - @comments.each do |comment_pair|
+    - comment_pair.each do |comment, nested_comments|
+      .card.mb-4
+        .card-header.mb-2.small
+          span.me-2 = comment.user.email
+          span = time_ago_in_words comment.created_at
 
-    .card.mb-4
-      .card-header.mb-2.small
-        span.me-2 = comment.user.email
-        span = time_ago_in_words comment.created_at
+        .card-body
+          p.mb-3 = comment.content
+          = render('posts/comments/nested_comment', nested_comments:)
 
-      .card-body
-        p.mb-3 = comment.content
-        = render partial: 'posts/comments/partial/nested_comment', collection: comment.children
-
-      hr.my-2
-      = render 'posts/comments/partial/reply_button', comment:, custom_class: 'p-4 pb-2'
+        hr.my-2
+        = render 'posts/comments/reply_button', comment:, custom_class: 'p-4 pb-2'

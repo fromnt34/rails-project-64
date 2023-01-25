@@ -2,6 +2,6 @@
 
 class HomeController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.includes(:creator).by_recently_created
   end
 end

@@ -6,21 +6,21 @@ nav class='navbar py-3 border-bottom'
   ul.nav.nav-pills
     - if current_user.present?
       li.nav-item.ms-2
-        = render 'layouts/partial/navigation/link',
-          text: 'Добавить статью',
+        = render 'layouts/navigation/link',
+          text: t(:new_post, scope: 'pages.navigation.links'),
           path: new_post_path
       li.nav-item.ms-2
-        = render 'layouts/partial/navigation/link',
-          text: 'Выйти',
+        = render 'layouts/navigation/link',
+          text: t(:sign_out, scope: 'pages.navigation.links'),
           path: destroy_user_session_path,
           link_method: :delete
 
     - else
       li.nav-item.ms-2
-        = render 'layouts/partial/navigation/link',
-          text: 'Войти',
+        = render 'layouts/navigation/link',
+          text: t(:sign_in, scope: 'pages.navigation.links'),
           path: new_user_session_path
       li.nav-item.ms-2
-        = render 'layouts/partial/navigation/link',
-          text: 'Регистрация',
+        = render 'layouts/navigation/link',
+          text: t(:sign_up, scope: 'pages.navigation.links'),
           path: new_user_registration_path

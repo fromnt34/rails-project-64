@@ -1,6 +1,7 @@
 ru:
   devise:
     failure:
+      unauthenticated: 'Вам необходимо войти в систему или зарегистрироваться.'
       invalid: 'Неправильный %{authentication_keys} или пароль.'
       not_found_in_database: 'Неправильный %{authentication_keys} или пароль.'
     registrations:

@@ -1,0 +1,12 @@
+- nested_comments.each do |comment, deep_nested_comments|
+  .pb-2 class=(comment.depth == 1 ? 'small' : 'ms-4')
+    hr.mb-2
+    .mb-4
+      span.me-1 = comment.user.email
+      span.text-muted = time_ago_in_words comment.created_at
+      p = comment.content
+
+    hr.mb-2
+    = render 'posts/comments/reply_button', comment:
+
+    = render('posts/comments/nested_comment', nested_comments: deep_nested_comments)
