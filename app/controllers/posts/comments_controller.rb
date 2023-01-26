@@ -11,8 +11,7 @@ module Posts
       if @comment.save
         redirect_to resource_post, notice: t('.')
       else
-        model_name = 'Комментарий'
-        flash[:alert] = "#{model_name} #{@comment.errors.messages[:content].first}"
+        flash[:alert] = "#{t(:text, scope: 'posts.comments')} #{@comment.errors.messages[:content].first}"
 
         redirect_to resource_post, status: :unprocessable_entity
       end
