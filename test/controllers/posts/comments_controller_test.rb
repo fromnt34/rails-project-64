@@ -48,9 +48,11 @@ module CommentsControllerTest
     test 'should create nested comment' do
       post post_comments_url(@post), params: { post_comment: @nested_attrs }
 
-      comment = PostComment.find do |i|
-        i.ancestry == @nested_attrs[:parent_id] && i.post == @post && i.user == @current_user
-      end
+      comment = PostComment.find_by({
+                                      ancestry: @nested_attrs[:parent_id],
+                                      post: @post,
+                                      user: @current_user
+                                    })
 
       assert { comment }
       assert_redirected_to @post
