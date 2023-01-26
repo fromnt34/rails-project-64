@@ -1,5 +1,7 @@
 ru:
   pages:
+    application:
+      title: RailsProject64
     home:
       index:
         welcome_title: Коллективный блог
@@ -18,3 +20,7 @@ ru:
         text: Понравилось %{count}
       comments:
         text: Комментарий
+        reply_button:
+          unauthorized:
+            text_html: Requires
+            link_text: Sign in

@@ -15,4 +15,6 @@ div class=custom_class
         custom_class: 'mb-4' \
       )
     - else
-      span Requires #{link_to 'Sign in', new_user_session_path}
+      span
+        => t('pages.posts.comments.reply_button.unauthorized.text_html')
+        = link_to t('pages.posts.comments.reply_button.unauthorized.link_text'), new_user_session_path
