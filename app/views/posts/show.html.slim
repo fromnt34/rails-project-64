@@ -24,16 +24,15 @@ div
       custom_class: 'mb-4' \
     )
 
-  - @comments.each do |comment_pair|
-    - comment_pair.each do |comment, nested_comments|
-      .card.mb-4
-        .card-header.mb-2.small
-          span.me-2 = comment.user.email
-          span = time_ago_in_words comment.created_at
+  - @comments.each do |comment, nested_comments|
+    .card.mb-4
+      .card-header.mb-2.small
+        span.me-2 = comment.user.email
+        span = time_ago_in_words comment.created_at
 
-        .card-body
-          p.mb-3 = comment.content
-          = render('posts/comments/nested_comment', nested_comments:)
+      .card-body
+        p.mb-3 = comment.content
+        = render('posts/comments/nested_comment', nested_comments:)
 
-        hr.my-2
-        = render 'posts/comments/reply_button', comment:, custom_class: 'p-4 pb-2'
+      hr.my-2
+      = render 'posts/comments/reply_button', comment:, custom_class: 'p-4 pb-2'

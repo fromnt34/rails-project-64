@@ -8,7 +8,7 @@ class PostsController < ApplicationController
 
     @user_like = @post.find_like(current_user) if current_user
 
-    @comments = @post.comments.includes(:user).filter(&:is_root?).map { |el| el.subtree.arrange }
+    @comments = @post.comments.arrange
     @new_comment = PostComment.new
   end
 
