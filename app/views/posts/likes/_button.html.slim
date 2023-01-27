@@ -1,13 +1,13 @@
 span.me-2 = post.likes.size
 
 - if like.present?
-  = link_to post_like_path(post, like),
+  = link_to post_like_path(post, like, format: :html),
     method: :delete,
     data: { turbo_method: :delete } \
     do
       i.bi.bi-hand-thumbs-up-fill
 - else
-  = link_to post_likes_path(post),
+  = link_to post_likes_path(post, format: :html),
     method: :post,
     data: { turbo_method: :post } \
     do
